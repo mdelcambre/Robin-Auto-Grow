@@ -1,0 +1,16 @@
+{
+  "name":"Robin Auto Grow",
+  "version":"0.1",
+  "description":"Prototype Chrome Extension",
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts":[
+    {
+      "matches":["https://*.reddit.com/robin*", "https://reddit.com/robin*"],
+      "js":["auto_grow.js"],
+      "run_at":"document_end"
+    }
+  ],
+  "manifest_version": 2
+}

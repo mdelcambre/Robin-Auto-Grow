@@ -36,6 +36,21 @@ function say(msg){
   document.querySelector('#robinSendMessage input[type=submit]').click();
   document.querySelector('#robinSendMessage input[type=text]').value = save;
 }
+
+
+// show currents vote labels
+function show_votes(){
+  window.setTimeout(show_votes, 1000);
+  console.log("Hello")
+  var v_grow = document.querySelectorAll('.robin--vote-class--increase').length
+  var v_stay = document.querySelectorAll('.robin--vote-class--continue').length
+  var v_leave = document.querySelectorAll('.robin--vote-class--abandon').length
+  document.querySelector('.robin--vote-class--increase .robin-chat--vote-label').innerHTML = 'Grow (' + v_grow + ')';
+  document.querySelector('.robin--vote-class--continue .robin-chat--vote-label').innerHTML = 'Stay (' + v_stay + ')';
+  document.querySelector('.robin--vote-class--abandon .robin-chat--vote-label').innerHTML = 'Abandon (' + v_leave + ')';
+}
+
+
 /**
  * Borrowed from an older project that needed to make sure that the page was
  * really done. Chrome will report that it is done, but js can kickoff more
@@ -55,6 +70,7 @@ function finish(){
     window.pageLoaderPid = window.setTimeout( finish, 200 );
     return;
   }
+  show_votes();
   window.setTimeout(auto_grow, 5000);
 }
 window.pageLoaderPid = window.setTimeout(finish, 2000);

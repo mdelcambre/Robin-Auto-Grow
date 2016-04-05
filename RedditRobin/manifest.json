@@ -1,6 +1,6 @@
 {
   "name":"Robin Auto Grow",
-  "version":"0.2",
+  "version":"0.25",
   "description":"Prototype Chrome Extension",
   "permissions": [
     "storage"

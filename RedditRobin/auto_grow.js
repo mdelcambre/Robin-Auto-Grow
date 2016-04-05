@@ -21,7 +21,6 @@ chrome.storage.local.get('grow', function(items){
   }
 });
 
-
 // When the page is done loading, check if we need to auto grow.
 function auto_grow(){
   chrome.storage.local.get('grow', function(items){
@@ -41,10 +40,18 @@ function say(msg){
 // show currents vote labels
 function show_votes(){
   window.setTimeout(show_votes, 1000);
-  console.log("Hello")
   var v_grow = document.querySelectorAll('.robin--vote-class--increase').length
   var v_stay = document.querySelectorAll('.robin--vote-class--continue').length
   var v_leave = document.querySelectorAll('.robin--vote-class--abandon').length
+  var overflow = document.querySelector('.robin-user-list-overflow-indicator');
+  if (overflow) {
+    var extra = parseInt(document.querySelector('.robin-user-list-overflow-indicator').innerHTML.substring(4));
+    var total = v_grow + v_stay + v_leave;
+    factor = (extra + total + 1.0)/total
+    v_grow = Math.round(v_grow * factor)
+    v_stay = Math.round(v_stay * factor)
+    v_leave = Math.round(v_leave * factor)
+  }
   document.querySelector('.robin--vote-class--increase .robin-chat--vote-label').innerHTML = 'Grow (' + v_grow + ')';
   document.querySelector('.robin--vote-class--continue .robin-chat--vote-label').innerHTML = 'Stay (' + v_stay + ')';
   document.querySelector('.robin--vote-class--abandon .robin-chat--vote-label').innerHTML = 'Abandon (' + v_leave + ')';

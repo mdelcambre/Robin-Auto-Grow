@@ -1,7 +1,7 @@
 {
   "name":"Robin Auto Grow",
   "version":"0.25",
-  "description":"Prototype Chrome Extension",
+  "description":"Provides auto voting and minor vote stats for Reddit Robin",
   "permissions": [
     "storage"
   ],
